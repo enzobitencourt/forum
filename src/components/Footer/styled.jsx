@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 
 export const FooterContainer = styled.footer`
-    width: 99vw;
+    width: 98vw;
     height: 35vh;
-    background-color: beige;
     display: flex;
     flex-direction: row;
     padding: 1%;
@@ -27,8 +26,8 @@ export const Direita = styled.div`
 `
 
 export const Logo = styled.img`
-    width: 8vw;
-    height: 11vh;
+    width: 7vw;
+    height: 10vh;
 `
 export const Texto = styled.p`
     color: #7A757D;

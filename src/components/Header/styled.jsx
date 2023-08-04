@@ -3,7 +3,7 @@ import login from "../../Assets/perfil.jpg"
 import pesquisa from "../../Assets/Pesquisa.png"
 
 export const Fundo = styled.div`
-    width: 99vw;
+    width: 100vw;
     height: 10vh;
     display: flex;
     flex-direction: row;
@@ -30,7 +30,8 @@ export const SecondContainer = styled.div`
 
 export const Logo = styled.img`
     width: 5vw;
-    height: 85%;
+    height: 8vh;
+    padding-left: 1vw;
 `
 
 export const Topicos = styled.p`
