@@ -7,7 +7,7 @@ function Footer(){
         <FooterContainer>
             <Esquerda>
                 <Logo src={LogoImg}/>
-                <Texto>Fórum desenvolvido para o Ensino Médio Senac São Leopoldo, a fim de aprimorar as habilidades técnicas e científicas</Texto>
+                <Texto>Fórum desenvolvido para o Ensino Médio Senac São Leopoldo, a fim de aprimorar as habilidades técnicas e científicas.</Texto>
                 <Titulo>São Leopoldo, 2023</Titulo>
             </Esquerda>
             <Direita>

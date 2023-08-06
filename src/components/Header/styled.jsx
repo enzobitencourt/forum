@@ -3,7 +3,7 @@ import login from "../../Assets/perfil.jpg"
 import pesquisa from "../../Assets/Pesquisa.png"
 
 export const Fundo = styled.div`
-    width: 100vw;
+    width: 98vw;
     height: 10vh;
     display: flex;
     flex-direction: row;
@@ -19,9 +19,8 @@ export const FirstContainer = styled.div`
 `
 
 export const SecondContainer = styled.div`
-    width: 74vw;
+    width: 71vw;
     height: 10vh;
-    padding: 0px 5px;
     justify-content: space-between;
     align-items: center;
     display: flex;
@@ -45,7 +44,6 @@ export const Topicos = styled.p`
 export const Logins = styled.div`
     width: 13vw;
     height: 10vh;
-    padding: 5px;
     justify-content: space-between;
     align-items: center;
     display: flex;

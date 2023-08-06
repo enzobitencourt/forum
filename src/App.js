@@ -1,13 +1,13 @@
+import Cadastro from './Pages/Cadastro/Cadastro';
+import Forum from './Pages/Forum/Forum';
+import Login from './Pages/Login/Login';
 import StyledGlobal from './StyledGlobal';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
 
 function App() {
   return (
     <>
     <StyledGlobal/>
-    <Header></Header>
-    <Footer></Footer>
+    <Forum/>
    </>
   )
 }

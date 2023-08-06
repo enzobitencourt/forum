@@ -1,16 +1,18 @@
 import { styled } from "styled-components";
 
 export const FooterContainer = styled.footer`
-    width: 98vw;
+    width: auto;
     height: 35vh;
     display: flex;
     flex-direction: row;
-    padding: 1%;
+    padding: 2vw;
     vertical-align: center;
+    margin-top: 10vh;
+    margin-bottom: 2vh;
 ` 
 
 export const Esquerda = styled.div`
-    width: 23vw;
+    width: 22vw;
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -18,7 +20,7 @@ export const Esquerda = styled.div`
 `
 
 export const Direita = styled.div`
-    width: 75vw;
+    width: 73vw;
     height: 20vh;
     display: flex;
     flex-direction: row;
@@ -32,7 +34,7 @@ export const Logo = styled.img`
 export const Texto = styled.p`
     color: #7A757D;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -41,7 +43,7 @@ export const Texto = styled.p`
 export const Texto1 = styled.p`
     color: #7A757D;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -51,7 +53,7 @@ export const Texto1 = styled.p`
 export const Titulo = styled.p`
     color: #7A757D;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -59,7 +61,7 @@ export const Titulo = styled.p`
 export const Titulo1 = styled.p`
     color: black;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
