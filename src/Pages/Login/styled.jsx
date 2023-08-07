@@ -50,7 +50,7 @@ export const Form = styled.div`
     padding: 5vh;
 `
 export const FormImage = styled.div`
-    width: 50%;
+    width: 45%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -58,7 +58,7 @@ export const FormImage = styled.div`
     padding: 1rem;
 `
 export const Image = styled.img`
-    width: 31rem;
+    width: 100%;
     height: 100%;
 `
 
@@ -73,6 +73,7 @@ export const InputBox = styled.div`
     flex-direction: column;
 `
 export const Input = styled.input`
+    width: 80%;
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;

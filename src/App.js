@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <StyledGlobal/>
-    <Forum/>
+    <Login/>
    </>
   )
 }

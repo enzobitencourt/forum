@@ -77,7 +77,7 @@ export const Titulo = styled.p`
 export const AdicionarPubli = styled.button`
     border-radius: 100px;
     background: #2E266D;
-    font-size: 14px;
+    font-size: 12px;
     color: white;
     display: flex;
     padding: 10px 40px;

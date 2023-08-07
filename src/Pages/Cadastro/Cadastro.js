@@ -21,7 +21,7 @@ function Cadastro() {
                                     </InputBox>
                                     <InputBox>
                                         <Label for="firstname">Senha</Label>
-                                        <Input id="firstname" type="text" name="firstname" placeholder="Digite sua senha" required></Input>
+                                        <Input id="firstname" type="password" name="firstname" placeholder="Digite sua senha" required></Input>
                                     </InputBox>
                                 </StyleForm>
                                 <Botao>Continuar</Botao>

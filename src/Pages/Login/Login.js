@@ -31,7 +31,7 @@ function Login() {
                                     <InputBoxContainer>
                                         <InputBox>
                                             <Label for="firstname">Telefone</Label>
-                                            <Input id="firstname" type="text" name="firstname" placeholder="Digite seu numero de telefone" required></Input>
+                                            <Input id="firstname" type="tel" name="firstname" placeholder="Digite seu telefone" required></Input>
                                         </InputBox><InputBox>
                                             <Label for="firstname">Senha</Label>
                                             <Input id="firstname" type="text" name="firstname" placeholder="Digite sua senha" required></Input>
