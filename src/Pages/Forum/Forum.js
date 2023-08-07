@@ -7,6 +7,7 @@ import FiltroArea from "../../components/FiltroArea/FiltroArea"
 import {SearchIcon} from "@chakra-ui/icons"
 import Publicacao from "../../Cards/CardPublicacao"
 import FooterResultados from "../../components/FooterResultados/FooterResultados"
+import Publicar from "../../components/Publicar/Publicar"
 
 function Forum(){
     return(

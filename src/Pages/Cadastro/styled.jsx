@@ -62,9 +62,10 @@ export const InputBox = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 1.1rem;
+    width: 100%;
 `
 export const Input = styled.input`
-    width: 100%;
+    width: 90%;
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
@@ -91,7 +92,7 @@ export const LogoImg = styled.img`
 
 export const ContainerFormulario = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   flex-direction: column;
   gap: 2vh;
   justify-content: center;
@@ -101,11 +102,11 @@ export const ContainerFormulario = styled.div`
 export const StyleForm = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
 `
 
 export const Botao = styled.button`
-    width: 100%;
+    width: 80%;
     color: white;
     height: 40px;
     border: none;
@@ -120,11 +121,12 @@ export const Botao = styled.button`
     box-shadow: 0px 12.116715431213379px 24.233430862426758px 0px rgba(1, 11, 253, 0.12);
 `
 export const Register = styled.button`
-    width: 100%;
+    width: 80%;
     height: 40px;
     border: none;
     color: #261ebe;
     background-color: white;
+    cursor: pointer;
     border: 1px solid #261ebe;
     padding: 0.62rem;
     border-radius: 8.078px;
