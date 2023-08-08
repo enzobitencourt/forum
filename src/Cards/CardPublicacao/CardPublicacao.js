@@ -1,5 +1,5 @@
 import { Barra, Cargo, Comments, Container, Descricao, FooterCard, ImagemPerfil, InfPerfil, Nome, Perfil, QuantComments, Tempo, Titulo } from "./styled"
-import ImgPerfil from "../Assets/perfilAriane.jpg"
+import ImgPerfil from "../../Assets/perfilAriane.jpg"
 
 function Publicacao(){
     return(

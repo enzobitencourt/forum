@@ -5,7 +5,7 @@ import Back from "../../Assets/back.png"
 import Filtro from "../../components/Filtro/Filtro"
 import FiltroArea from "../../components/FiltroArea/FiltroArea"
 import {SearchIcon} from "@chakra-ui/icons"
-import Publicacao from "../../Cards/CardPublicacao"
+import Publicacao from "../../Cards/CardPublicacao/CardPublicacao"
 import FooterResultados from "../../components/FooterResultados/FooterResultados"
 import Publicar from "../../components/Publicar/Publicar"
 

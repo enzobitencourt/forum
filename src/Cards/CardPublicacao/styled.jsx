@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import comments from "../Assets/comments.svg"
+import comments from "../../Assets/comments.svg"
 
 export const Container = styled.div`
     display: flex;

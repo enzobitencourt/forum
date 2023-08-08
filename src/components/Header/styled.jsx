@@ -33,9 +33,11 @@ export const Logo = styled.img`
     padding-left: 1vw;
 `
 
-export const Topicos = styled.p`
+export const Topicos = styled.button`
     color: var(--base-dark-gray, #34364A);
     font-family: Poppins;
+    border: none;
+    background: none;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
