@@ -17,6 +17,8 @@ function Home(){
                     <LastPubliCard/>
                     <LastPubliCard/>
                     <LastPubliCard/>
+                    <LastPubliCard/>
+                    <LastPubliCard/>
                 </LastPublis>
             </LeftContainer>
             <RightContainer>

@@ -1,6 +1,5 @@
-import { Subtitulo } from "../../Pages/Forum/styled";
-import { BtnPublicar, CriarPublicacao, FooterPublicacao, FundoBody, ImagemBotao, InputContent, InputTitulo, Titulo } from "./styled";
-import Xsair from "../../Assets/Xsair.png"
+import { BtnPublicar, Conteudo, CriarPublicacao, Entradas, FooterPublicacao, FundoBody, Header, ImagemBotao, InputContent, InputTitulo, Tittle, Titulo } from "./styled";
+import { ModalCloseButton } from "@chakra-ui/react";
 
 function Publicar(){
     return(
@@ -8,17 +7,26 @@ function Publicar(){
             <FundoBody>
                 <CriarPublicacao>
                     <FooterPublicacao>
-                        <Subtitulo>Publique sua matéria</Subtitulo>
-                        <ImagemBotao src={Xsair}></ImagemBotao>
+                        <Header>
+                            <Tittle>Publique sua matéria</Tittle>
+                            <ModalCloseButton bg='none' border='none' h='5vh'/>
+                        </Header>
                     </FooterPublicacao>
-
-                    <Titulo>Título</Titulo>
-                    <InputTitulo placeholder="Digite aqui seu titulo"/>
-                    <Titulo>Palavras-chave</Titulo>
-                    <InputTitulo placeholder="Digite aqui suas palavras-chave"/>
-                    <Titulo>Matéria</Titulo>
-                    <InputContent placeholder="Descreva o seu assunto"/>
-                    <BtnPublicar>Publicar</BtnPublicar>
+                    <Conteudo>
+                        <Entradas>
+                            <Tittle>Título</Tittle>
+                            <InputTitulo placeholder="Digite aqui seu titulo"/>
+                        </Entradas>
+                        <Entradas>
+                            <Tittle>Palavras-chave</Tittle>
+                            <InputTitulo placeholder="Digite aqui suas palavras-chave"/>
+                        </Entradas>
+                        <Entradas>
+                            <Tittle>Descrição</Tittle>
+                            <InputContent placeholder="Descreva o seu assunto"/>
+                        </Entradas>
+                        <BtnPublicar>Publicar</BtnPublicar>
+                    </Conteudo>
                 </CriarPublicacao>
             </FundoBody>
         </>

@@ -6,21 +6,17 @@ export const FundoBody = styled.body`
     align-items: center;
     height: 100vh;
     margin: 0;
+    background: rgba(0, 0, 0, 0.72);
 `
 
 export const CriarPublicacao = styled.div`
     background: var(--base-light-gray, #F6F8FD);;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 4vh;
-    width: 34vw;
+    align-content: center;
+    width: 35vw;
     height: auto;
 `
-
-export const Titulo = styled.h2`
-    font-size: 18px;
-    margin-top: 0;
-` 
 
 export const InputTitulo = styled.input`
     width: 95%;
@@ -29,6 +25,7 @@ export const InputTitulo = styled.input`
     border: 1px solid #ccc;
     border-radius: 20px;
     margin-bottom: 16px;
+    background: var(--base-light-blue, #E8EFFF);
 `
 
 export const InputContent = styled.input`
@@ -52,30 +49,48 @@ export const BtnPublicar = styled.button`
     float: right;
 `
 
-export const BtnSair = styled.button`
-    height: 20vh;
-    width: 20vh;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 5vh;
-    border: none;
-
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: right;
-`
-
 export const ImagemBotao = styled.img`
     height: 4vh;
     width: 4vh;
 `
 
 export const FooterPublicacao = styled.div`
-    height: 14vh;
-    width: 70vh;
+    height: 11vh;
+    width: 100%;
+    border-bottom: 1px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
+`
+
+export const Header = styled.div`
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: 3vh;
+    justify-content: space-between;
+`
+
+export const Tittle = styled.p`
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+`
+
+export const Conteudo = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 3vh;
+    gap: 2vh;
+`
+
+export const Entradas = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
 `
