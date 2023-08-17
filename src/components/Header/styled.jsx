@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import login from "../../Assets/perfil.jpg"
-import pesquisa from "../../Assets/Pesquisa.png"
 
 export const Fundo = styled.div`
     width: 98vw;
@@ -44,7 +43,7 @@ export const Topicos = styled.button`
     line-height: normal;
 `
 export const Logins = styled.div`
-    width: 13vw;
+    width: 9vw;
     height: 10vh;
     justify-content: space-between;
     align-items: center;
@@ -58,10 +57,4 @@ export const Foto = styled.div`
     width: 40px;
     height: 40px;
     background-size: cover;
-`
-export const Pesquisa = styled.div`
-    background: url(${pesquisa});
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
 `

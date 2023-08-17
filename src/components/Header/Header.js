@@ -1,4 +1,4 @@
-import { FirstContainer, Foto, Fundo, Logins, Logo, Pesquisa, SecondContainer, Topicos } from "./styled"
+import { FirstContainer, Foto, Fundo, Logins, Logo, SecondContainer, Topicos } from "./styled"
 import LogoImg from "../../Assets/logoforum.png"
 
 function Header(){
@@ -14,7 +14,6 @@ function Header(){
             </FirstContainer> 
             <SecondContainer>
                 <Logins>
-                    <Pesquisa/>
                     <Topicos>Olá, Aline</Topicos>
                     <Foto/>
                 </Logins>

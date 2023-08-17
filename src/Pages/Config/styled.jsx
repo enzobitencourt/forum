@@ -5,7 +5,7 @@ export const Main = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 115vh;
+    height: 100vh;
     gap: 1vw;
     margin-bottom: 15vw;
 `
@@ -29,7 +29,7 @@ export const Name = styled.h1`
     font-style: bold;
     font-weight: 400;
     line-height: normal;
-    margin-left: 20vw;
+    margin-left: 12vw;
     margin-top: -6vh;
     `
 export const DisplayButton = styled.div`
@@ -78,7 +78,7 @@ export const Topicos = styled.button`
     `
 export const Fundo = styled.div`
     width: 100%;
-    height: auto;
+    height: 70vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -94,7 +94,7 @@ export const LogoPerfil = styled.img`
     border-radius: 50%;
     height: 17vh;
     align-items: center;
-    margin-left: 10vw;
+    margin-left: 3vw;
     margin-top: -10vh;
 `
 export const Forms = styled.div`
