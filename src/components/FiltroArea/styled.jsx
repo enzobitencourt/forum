@@ -4,7 +4,8 @@ export const Container = styled.div`
     width: auto;
     height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.5vh;
 `
 
 export const CheckBox = styled.input`

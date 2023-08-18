@@ -1,21 +1,12 @@
 import { styled } from "styled-components";
 
-export const FundoBody = styled.body`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: rgba(0, 0, 0, 0.72);
-`
 
 export const CriarPublicacao = styled.div`
-    background: var(--base-light-gray, #F6F8FD);;
+    background: var(--base-light-gray, #F6F8FD);
     border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     align-content: center;
     width: 35vw;
-    height: auto;
+    height: 95vh;
 `
 
 export const InputTitulo = styled.input`
@@ -68,8 +59,9 @@ export const Header = styled.div`
     flex-direction: row;
     height: 100%;
     width: 100%;
-    align-items: center;
     padding: 3vh;
+    align-content: center;
+    align-items: center;
     justify-content: space-between;
 `
 

@@ -27,7 +27,7 @@ export const SecondContainer = styled.div`
 `
 
 export const Logo = styled.img`
-    width: 5vw;
+    width: 6vw;
     height: 8vh;
     padding-left: 1vw;
 `
@@ -51,7 +51,7 @@ export const Logins = styled.div`
     flex-direction: row;
 `
 
-export const Foto = styled.div`
+export const Foto = styled.button`
     background: url(${login});
     border-radius: 50%;
     width: 40px;

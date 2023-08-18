@@ -14,18 +14,23 @@ import {
     ModalContent,
     useDisclosure
   } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom"
 
 
 function Forum() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const navigate = useNavigate()
 
+    const goBack = () =>{
+        navigate(-1)
+    }
     return (
         <>
             <Header />
             <MainContainer>
                 <Cima>
                     <Esquerda>
-                        <Voltar>
+                        <Voltar onClick={goBack}>
                             <SimboloVolt src={Back} />
                             <TextoVolt>Voltar</TextoVolt>
                         </Voltar>
@@ -40,7 +45,7 @@ function Forum() {
                             <AdicionarPubli onClick={onOpen}>Adicionar Publicação</AdicionarPubli>
                             <Modal isOpen={isOpen} onClose={onClose}>
                                 <ModalOverlay />
-                                <ModalContent>
+                                <ModalContent bg='none'>
                                     <Publicar/>
                                 </ModalContent>
                             </Modal>

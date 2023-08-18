@@ -1,7 +1,19 @@
-import { Container, Form, FormImage, Image, InputBox, Input, Label, ContainerForm, Divi, LogoImg, ContainerFormulario, StyleForm, Botao, InputBoxContainer } from "./styled"
-import ImagemPrincipal from "../../Assets/imageleitura.png"
+import { Container, Form, FormImage, Image, InputBox, Input, Label, ContainerForm, Divi, LogoImg, ContainerFormulario, StyleForm, Botao, Register } from "./styled"
+import ImagemLogin from "../../Assets/imagelogin.png"
 import Logo from "../../Assets/logo.png"
+import { useNavigate } from "react-router-dom"
+
 function Login() {
+    const navigate = useNavigate()
+
+    const goToCadastro = () =>{
+        navigate('/cadastro')
+    }
+
+    const goToHome = () =>{
+        navigate('/home')
+    }
+
     return (
         <>
             <Container>
@@ -9,40 +21,22 @@ function Login() {
                     <Form>
                         <Divi>
                             <FormImage>
-                                <Image src={ImagemPrincipal} />
+                                <Image src={ImagemLogin} />
                             </FormImage>
                             <ContainerFormulario>
                                 <LogoImg src={Logo} />
                                 <StyleForm >
-                                    <InputBoxContainer>
-                                        <InputBox>
-                                            <Label for="firstname">Primeiro Nome</Label>
-                                            <Input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required></Input>
-                                        </InputBox>
-                                        <InputBox>
-                                            <Label for="firstname">Sobrenome</Label>
-                                            <Input id="firstname" type="text" name="firstname" placeholder="Digite seu sobrenome" required></Input>
-                                        </InputBox>
-                                        <InputBox>
-                                            <Label for="firstname">Email</Label>
-                                            <Input id="firstname" type="text" name="firstname" placeholder="Digite seu email" required></Input>
-                                        </InputBox>
-                                    </InputBoxContainer>
-                                    <InputBoxContainer>
-                                        <InputBox>
-                                            <Label for="firstname">Telefone</Label>
-                                            <Input id="firstname" type="tel" name="firstname" placeholder="Digite seu telefone" required></Input>
-                                        </InputBox><InputBox>
-                                            <Label for="firstname">Senha</Label>
-                                            <Input id="firstname" type="text" name="firstname" placeholder="Digite sua senha" required></Input>
-                                        </InputBox>
-                                        <InputBox>
-                                            <Label for="firstname">Confirme sua senha</Label>
-                                            <Input id="firstname" type="text" name="firstname" placeholder="Confirme sua senha" required></Input>
-                                        </InputBox>
-                                    </InputBoxContainer>
+                                    <InputBox>
+                                        <Label for="firstname">Email</Label>
+                                        <Input id="email" type="text" name="email" placeholder="Digite seu email" required></Input>
+                                    </InputBox>
+                                    <InputBox>
+                                        <Label for="firstname">Senha</Label>
+                                        <Input id="firstname" type="password" name="firstname" placeholder="Digite sua senha" required></Input>
+                                    </InputBox>
                                 </StyleForm>
-                                <Botao>Continuar</Botao>
+                                <Botao onClick={goToHome}>Continuar</Botao>
+                                <Register onClick={goToCadastro}>Registrar</Register>
                             </ContainerFormulario>
                         </Divi>
                     </Form>

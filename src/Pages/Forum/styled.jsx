@@ -18,10 +18,10 @@ export const Direita = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 3vh;
+    gap: 4vh;
 `
 
-export const Voltar = styled.div`
+export const Voltar = styled.button`
     width: 6.5vw;
     height: 5vh;
     align-content: center;
@@ -29,6 +29,8 @@ export const Voltar = styled.div`
     justify-content: space-between;
     display: flex;
     flex-direction: row;
+    background: none;
+    border: none;
 `
 
 export const SimboloVolt = styled.img`
@@ -132,8 +134,7 @@ export const Subtitulo = styled.p`
 export const TemaDisc = styled.p`
     color: var(--base-dark-gray, #34364A);
     text-align: center;
-    font-family: Poppins;
-    font-size: 22px;
+    font-size: 19px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -143,7 +144,7 @@ export const TemaDisc = styled.p`
 export const InputContainer = styled.div`
     display: flex;
     width: auto;
-    height: 4vh;
+    height: 7vh;
     padding: 10px 20px;
     align-items: center;
     gap: 10px;
@@ -155,7 +156,7 @@ export const InputContainer = styled.div`
 export const Input = styled.input`
     width: 65vw;
     border: none;
-    height: 4vh;
+    height: 7vh;
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;

@@ -22,16 +22,14 @@ export const LeftContainer = styled.div`
 
 export const LastPubli = styled.div`
     border-radius: 100px;
-    width: 26vw;
-    height: 5vh;
+    width: 28vw;
+    height: 6vh;
     background: #2E266D;
     font-size: 12px;
     color: white;
     display: flex;
-    padding: 0.5vw 2vw;
     justify-content: center;
     align-items: center;
-    align-self: stretch;
 `
 
 export const LastPublis = styled.div`
@@ -52,6 +50,6 @@ export const RightContainer = styled.div`
 `
 
 export const LogoGrande = styled.img`
-    width: 100%;
+    width: 90%;
     height: 100%;
 `

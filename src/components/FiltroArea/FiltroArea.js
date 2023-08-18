@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Label } from "./styled"
+import { Container, Label } from "./styled"
 
 const allToppings = [
   { name: "Linguagens", checked: false },
@@ -36,7 +36,7 @@ function FiltroArea() {
   }
 
   return (
-    <div className="App">
+    <Container>
       {toppings.map((topping, index) => (
         <Checkbox
           key={topping.name}
@@ -46,7 +46,7 @@ function FiltroArea() {
         />
       ))}
 
-    </div>
+    </Container>
   )
 }
 

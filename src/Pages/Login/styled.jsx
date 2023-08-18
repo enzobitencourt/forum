@@ -1,4 +1,3 @@
-
 import { styled } from "styled-components";
 
 export const CaixaDeTexto = styled.div`
@@ -24,7 +23,7 @@ export const Container = styled.div`
 `
 
 export const ContainerForm = styled.div`
-width: 70%;
+width: 80%;
 display: flex;
 align-self: center;
 height: 90vh;
@@ -40,18 +39,16 @@ export const Body = styled.div`
     background: #0c0ce94d;
 `
 export const Form = styled.div`
-    width: 70vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: #fff;
-    padding: 5vh;
 `
 export const FormImage = styled.div`
-    width: 45%;
-    height: 100%;
+    width: 65vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,21 +56,16 @@ export const FormImage = styled.div`
 `
 export const Image = styled.img`
     width: 100%;
-    height: 100%;
 `
 
-export const Header = styled.div`
-    margin-bottom: 3rem;
-    display: flex;
-    justify-content: space-between;
-   
-`
 export const InputBox = styled.div`
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 100%;
 `
 export const Input = styled.input`
-    width: 80%;
+    width: 90%;
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
@@ -85,47 +77,62 @@ export const Label = styled.label`
     font-size: 0.75rem;
     font-weight: 600;
     color: #000000c0;
-    `
+`
 
 export const Divi = styled.div`
-    display: flex;
-    height: 100%;
-    gap: 2vw;
+display: flex;
+width: 100%;
+justify-content: space-between;
+gap: 2vw;
 `
 
 export const LogoImg = styled.img`
-    width: 210px;
+    width: 50%;
 `
 
 export const ContainerFormulario = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
+  gap: 2vh;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 2vh;
 `
 
 export const StyleForm = styled.div`
     display: flex;
-    gap: 2vw;
+    flex-direction: column;
+    width: 80%;
 `
 
 export const Botao = styled.button`
     width: 80%;
+    color: white;
+    height: 40px;
     border: none;
     background-color: #261ebe;
     padding: 0.62rem;
     cursor: pointer;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
     border-radius: 8.078px;
     box-shadow: 0px 12.116715431213379px 24.233430862426758px 0px rgba(1, 11, 253, 0.12);
-    justify-content: center;
-    color: white;
 `
-
-export const InputBoxContainer = styled.div`
+export const Register = styled.button`
+    width: 80%;
+    height: 40px;
+    border: none;
+    color: #261ebe;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid #261ebe;
+    padding: 0.62rem;
+    border-radius: 8.078px;
+    box-shadow: 0px 12.116715431213379px 24.233430862426758px 0px rgba(1, 11, 253, 0.12);
     display: flex;
-    flex-direction: column;
-    gap: 1vh;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 `

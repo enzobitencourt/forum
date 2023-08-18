@@ -6,7 +6,7 @@ export const Container = styled.div`
     flex-direction: column;
     padding: 3vh 1vw;
     gap: 3.5vh;
-    width: 26.7vw;
+    width: 28vw;
     height: auto;
     border-radius: 10px;
     background: #FFF;
@@ -73,7 +73,6 @@ export const Cargo = styled.p`
 
 export const Tempo = styled.p`
     color: var(--base-mid-gray, #7A757D);
-    font-family: Poppins;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
