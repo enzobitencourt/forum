@@ -8,7 +8,7 @@ function Publicar() {
                 <FooterPublicacao>
                     <Header>
                         <Tittle>Publique sua matéria</Tittle>
-                        <ModalCloseButton bg='none' w="3vw" h='3vw' marginTop="1vh" display='flex' border='none' h='5vh' />
+                        <ModalCloseButton bg='none' w="3vw" h='3vw' marginTop="1vh" display='flex' border='none'/>
                     </Header>
                 </FooterPublicacao>
                 <Conteudo>

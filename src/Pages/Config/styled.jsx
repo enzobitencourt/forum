@@ -29,8 +29,8 @@ export const Name = styled.h1`
     font-style: bold;
     font-weight: 400;
     line-height: normal;
-    margin-left: 12vw;
-    margin-top: -6vh;
+    margin-left: 13vw;
+    margin-top: -8vh;
     `
 export const DisplayButton = styled.div`
     flex-direction: row;
@@ -90,10 +90,11 @@ export const BannerImg = styled.img`
     align-items: center;
 `
 export const LogoPerfil = styled.img`
-    width: 17vh;
+    width: 20vh;
     border-radius: 50%;
-    height: 17vh;
+    height: 20vh;
     align-items: center;
+    border: 10px solid #1E2772;
     margin-left: 3vw;
     margin-top: -10vh;
 `
