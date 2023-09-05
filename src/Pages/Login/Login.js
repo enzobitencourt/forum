@@ -2,16 +2,37 @@ import { Container, Form, FormImage, Image, InputBox, Input, Label, ContainerFor
 import ImagemLogin from "../../Assets/imagelogin.png"
 import Logo from "../../Assets/logo.png"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import axios from "axios"
 
 function Login() {
     const navigate = useNavigate()
 
-    const goToCadastro = () =>{
+    const goToCadastro = () => {
         navigate('/cadastro')
     }
 
-    const goToHome = () =>{
+    const goToHome = () => {
         navigate('/home')
+    }
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const credentials = { email, password }
+
+        axios.post('http://localhost:8000/login', credentials, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                goToHome()
+            })
+            .catch(error => console.log('error'))
     }
 
     return (
@@ -24,19 +45,29 @@ function Login() {
                                 <Image src={ImagemLogin} />
                             </FormImage>
                             <ContainerFormulario>
-                                <LogoImg src={Logo} />
-                                <StyleForm >
+                                <LogoImg src={Logo}/>
+                                <StyleForm onSubmit={handleSubmit}>
                                     <InputBox>
                                         <Label for="firstname">Email</Label>
-                                        <Input id="email" type="text" name="email" placeholder="Digite seu email" required></Input>
+                                        <Input value={email}
+                                            type="email"
+                                            placeholder="Digite seu email"
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            required />
                                     </InputBox>
+
                                     <InputBox>
                                         <Label for="firstname">Senha</Label>
-                                        <Input id="firstname" type="password" name="firstname" placeholder="Digite sua senha" required></Input>
+                                        <Input value={password}
+                                            type="password"
+                                            placeholder="Digite sua senha"
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            required />
                                     </InputBox>
+
+                                    <Botao type="submit">Entrar</Botao>
+                                    <Register onClick={goToCadastro}>Registrar</Register>
                                 </StyleForm>
-                                <Botao onClick={goToHome}>Continuar</Botao>
-                                <Register onClick={goToCadastro}>Registrar</Register>
                             </ContainerFormulario>
                         </Divi>
                     </Form>

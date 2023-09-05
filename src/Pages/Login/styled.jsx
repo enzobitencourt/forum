@@ -65,7 +65,7 @@ export const InputBox = styled.div`
     width: 100%;
 `
 export const Input = styled.input`
-    width: 90%;
+    width: 100%;
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
@@ -99,14 +99,14 @@ export const ContainerFormulario = styled.div`
   align-items: center;
 `
 
-export const StyleForm = styled.div`
+export const StyleForm = styled.form`
     display: flex;
     flex-direction: column;
     width: 80%;
 `
 
 export const Botao = styled.button`
-    width: 80%;
+    width: 100%;
     color: white;
     height: 40px;
     border: none;
@@ -121,8 +121,9 @@ export const Botao = styled.button`
     box-shadow: 0px 12.116715431213379px 24.233430862426758px 0px rgba(1, 11, 253, 0.12);
 `
 export const Register = styled.button`
-    width: 80%;
+    width: 100%;
     height: 40px;
+    margin-top: 2vh;
     border: none;
     color: #261ebe;
     background-color: white;

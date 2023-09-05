@@ -1,6 +1,5 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Rotas from './Rotas/Rotas';
-import Comentario from './Pages/Comentario/Comentario';
 
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
   return (
     <>
     <ChakraProvider theme={theme}>
-      <Comentario/>
+      <Rotas/>
     </ChakraProvider>
    </>
   )
