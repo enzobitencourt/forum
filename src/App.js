@@ -1,7 +1,6 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Rotas from './Rotas/Rotas';
 
-
 function App() {
   const styles = {
     global: () => ({

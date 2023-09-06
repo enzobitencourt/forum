@@ -24,6 +24,11 @@ function Forum() {
     const goBack = () =>{
         navigate(-1)
     }
+
+    const goToPublic=()=>{
+        navigate('/publicacao')
+    }
+
     return (
         <>
             <Header />
@@ -68,7 +73,7 @@ function Forum() {
                             <TituloFiltro>Filtro de palavra-chave:</TituloFiltro>
                             <RespostaFiltros>Teste</RespostaFiltros>
                         </FiltrosEscolhidos>
-                        <Publicacao />
+                        <Publicacao ir={goToPublic}/>
                         <Publicacao />
                         <Publicacao />
                         <Publicacao />

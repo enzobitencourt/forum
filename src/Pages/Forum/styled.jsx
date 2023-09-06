@@ -107,7 +107,7 @@ export const TituloPrincipal = styled.div`
 `
 
 export const Cima = styled.div`
-    width: 97vw;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;

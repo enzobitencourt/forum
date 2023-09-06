@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import comments from "../../Assets/comments.svg"
 
-export const Container = styled.div`
+export const Container = styled.button`
     display: flex;
     flex-direction: column;
     padding: 4vh;
@@ -82,7 +82,7 @@ export const Tempo = styled.p`
 `
 export const Descricao = styled.p`
     color: var(--base-mid-gray, #7A757D);
-    font-family: Poppins;
+    text-align: justify;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;

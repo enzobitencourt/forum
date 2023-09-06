@@ -1,10 +1,10 @@
 import { Barra, Cargo, Comments, Container, Descricao, FooterCard, ImagemPerfil, InfPerfil, Nome, Perfil, QuantComments, Tempo, Titulo } from "./styled"
 import ImgPerfil from "../../Assets/perfilAriane.jpg"
 
-function Publicacao(){
+function Publicacao(props){
     return(
         <>
-        <Container>
+        <Container onClick={props.ir}>
             <Titulo>Cotas Raciais no serviço público</Titulo>
             <Barra>
                 <Perfil>
