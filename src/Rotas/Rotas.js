@@ -10,7 +10,7 @@ function Rotas(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route index element={<Home/>}/>
+                <Route index element={<Login/>}/>
                 <Route path="forum" element={<Forum/>}/>
                 <Route path="config" element={<Config/>}/>
                 <Route path="home" element={<Home/>}/>

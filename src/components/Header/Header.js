@@ -28,7 +28,9 @@ function Header() {
         navigate('/config')
     }
 
-    const goToLogin = () => {
+    const handleLogout = () => {
+        localStorage.removeItem('email')
+        localStorage.removeItem('token')
         navigate('/login')
     }
     return (
@@ -48,7 +50,7 @@ function Header() {
                                 <Button bg='#2E266D' color='white' mr={3} onClick={onClose}>
                                     Cancelar
                                 </Button>
-                                <Button onClick={goToLogin} border='1px solid #2E266D' variant='ghost'>Sair</Button>
+                                <Button onClick={handleLogout} border='1px solid #2E266D' variant='ghost'>Sair</Button>
                             </ModalFooter>
                         </ModalContent>
                     </Modal>

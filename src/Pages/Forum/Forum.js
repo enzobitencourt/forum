@@ -15,7 +15,7 @@ import {
     useDisclosure
   } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
-
+import { useEffect } from "react"
 
 function Forum() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -28,6 +28,13 @@ function Forum() {
     const goToPublic=()=>{
         navigate('/publicacao')
     }
+
+    useEffect(()=>{
+        const token = localStorage.getItem('token')
+        if(!token){
+            navigate('/')
+        }
+    }, [navigate])
 
     return (
         <>

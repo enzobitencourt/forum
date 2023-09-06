@@ -12,8 +12,9 @@ function Login() {
         navigate('/cadastro')
     }
 
-    const goToHome = () => {
-        navigate('/home')
+    const saveUserInfoLocalStorage =(token)=>{
+        localStorage.setItem('token', token)
+        localStorage.setItem('email', email)
     }
 
     const [email, setEmail] = useState('')
@@ -30,7 +31,8 @@ function Login() {
             },
         })
             .then(response => {
-                goToHome()
+                saveUserInfoLocalStorage(response.data.token)
+                navigate('/home')
             })
             .catch(error => console.log('error'))
     }

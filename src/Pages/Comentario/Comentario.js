@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import Comment from '../../Cards/CardComent/Coment';
 import { useNavigate } from 'react-router-dom';
 import Back from "../../Assets/back.png"
+import { useEffect } from "react"
 
 function Comentario() {
   const navigate = useNavigate()
@@ -13,6 +14,13 @@ function Comentario() {
   const goBack = () => {
     navigate(-1)
   }
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if(!token){
+        navigate('/')
+    }
+}, [navigate])
 
   return (
     <>
