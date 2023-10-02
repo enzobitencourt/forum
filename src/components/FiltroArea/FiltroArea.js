@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { Container, Label } from "./styled"
+import React, { useState } from "react";
+import { Container } from "./styled"; // Remova a importação não utilizada de Label
 
 const allToppings = [
   { name: "Linguagens", checked: false },
   { name: "Matemática", checked: false },
   { name: "Ciências Humanas", checked: false },
-  { name: "Ciências da Natureza", checked: false }
-]
+  { name: "Ciências Natureza", checked: false }
+];
 
 export const Checkbox = ({ isChecked, label, checkHandler, index }) => {
   return (
@@ -17,22 +17,32 @@ export const Checkbox = ({ isChecked, label, checkHandler, index }) => {
         checked={isChecked}
         onChange={checkHandler}
       />
-      <Label htmlFor={`checkbox-${index}`}>{label}</Label>
+      <label htmlFor={`checkbox-${index}`}>
+        <span>&nbsp;</span> 
+        {label}
+      </label>
     </div>
-  )
+  );
 }
 
-function FiltroArea() {
-  const [toppings, setToppings] = useState(allToppings)
+function FiltroArea({ onCheckedToppingsChange }) {
+  const [toppings, setToppings] = useState(allToppings);
 
-  const updateCheckStatus = index => {
-    setToppings(
-      toppings.map((topping, currentIndex) =>
-        currentIndex === index
-          ? { ...topping, checked: !topping.checked }
-          : topping
-      )
-    )
+  const updateCheckStatus = (index) => {
+    const updatedToppings = toppings.map((topping, currentIndex) =>
+      currentIndex === index
+        ? { ...topping, checked: !topping.checked }
+        : topping
+    );
+    setToppings(updatedToppings);
+
+    const selectedNames = getCheckedToppings(updatedToppings);
+
+    onCheckedToppingsChange(selectedNames);
+  };
+
+  function getCheckedToppings(toppings) {
+    return toppings.filter((topping) => topping.checked).map((topping) => topping.name);
   }
 
   return (
@@ -45,9 +55,8 @@ function FiltroArea() {
           label={topping.name}
         />
       ))}
-
     </Container>
-  )
+  );
 }
 
-export default FiltroArea
+export default FiltroArea;

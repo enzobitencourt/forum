@@ -13,28 +13,34 @@ import {
     ModalOverlay,
     ModalContent,
     useDisclosure
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 function Forum() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const navigate = useNavigate()
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const navigate = useNavigate();
 
-    const goBack = () =>{
-        navigate(-1)
-    }
+    const goBack = () => {
+        navigate(-1);
+    };
 
-    const goToPublic=()=>{
-        navigate('/publicacao')
-    }
+    const goToPublic = () => {
+        navigate("/publicacao");
+    };
 
-    useEffect(()=>{
-        const token = localStorage.getItem('token')
-        if(!token){
-            navigate('/')
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/");
         }
-    }, [navigate])
+    }, [navigate]);
+
+    // Estado para rastrear os dados do componente Filtro
+    const [checkedToppingsFiltro, setCheckedToppingsFiltro] = useState([]);
+
+    // Estado para rastrear os dados do componente FiltroArea
+    const [checkedToppingsFiltroArea, setCheckedToppingsFiltroArea] = useState([]);
 
     return (
         <>
@@ -58,14 +64,18 @@ function Forum() {
                             <Modal isOpen={isOpen} onClose={onClose}>
                                 <ModalOverlay />
                                 <ModalContent bg='none'>
-                                    <Publicar/>
+                                    <Publicar />
                                 </ModalContent>
                             </Modal>
                             <Filtros>
                                 <Titulo>Filtros</Titulo>
-                                <Filtro />
+                                <Filtro
+                                    onCheckedToppingsChange={(toppings) => setCheckedToppingsFiltro(toppings)}
+                                />
                                 <Divisao />
-                                <FiltroArea />
+                                <FiltroArea
+                                    onCheckedToppingsChange={(toppings) => setCheckedToppingsFiltroArea(toppings)}
+                                />
                             </Filtros>
                         </FiltroContainer>
                     </Esquerda>
@@ -78,9 +88,11 @@ function Forum() {
                         </InputContainer>
                         <FiltrosEscolhidos>
                             <TituloFiltro>Filtro de palavra-chave:</TituloFiltro>
-                            <RespostaFiltros>Teste</RespostaFiltros>
+                            <RespostaFiltros>
+                                {checkedToppingsFiltro.concat(checkedToppingsFiltroArea).join(", ")}
+                            </RespostaFiltros>
                         </FiltrosEscolhidos>
-                        <Publicacao ir={goToPublic}/>
+                        <Publicacao ir={goToPublic} />
                         <Publicacao />
                         <Publicacao />
                         <Publicacao />
@@ -91,7 +103,7 @@ function Forum() {
             </MainContainer>
             <Footer />
         </>
-    )
+    );
 }
 
 export default Forum
