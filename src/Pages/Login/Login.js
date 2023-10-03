@@ -4,6 +4,7 @@ import Logo from "../../Assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
+import { useForm } from "../../Hooks/useForm"
 
 function Login() {
     const navigate = useNavigate()
@@ -17,9 +18,7 @@ function Login() {
         localStorage.setItem('email', email)
     }
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
+    const [form, onChangeForm] = useForm({nome: '', password:''})
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -51,19 +50,23 @@ function Login() {
                                 <StyleForm onSubmit={handleSubmit}>
                                     <InputBox>
                                         <Label for="firstname">Email</Label>
-                                        <Input value={email}
-                                            type="email"
+                                        <Input 
+                                            name='nome'
+                                            value={form.nome}
+                                            type="text"
                                             placeholder="Digite seu email"
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            onChange={onChangeForm}
                                             required />
                                     </InputBox>
 
                                     <InputBox>
                                         <Label for="firstname">Senha</Label>
-                                        <Input value={password}
+                                        <Input 
+                                            name='password'
+                                            value={form.password}
                                             type="password"
                                             placeholder="Digite sua senha"
-                                            onChange={(e) => setPassword(e.target.value)}
+                                            onChange={onChangeForm}
                                             required />
                                     </InputBox>
 
