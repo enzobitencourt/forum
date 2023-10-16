@@ -2,8 +2,7 @@ import { Container, Form, FormImage, Image, InputBox, Input, Label, ContainerFor
 import ImagemLogin from "../../Assets/imagelogin.png"
 import Logo from "../../Assets/logo.png"
 import { useNavigate } from "react-router-dom"
-import { useForm } from "../../Hooks/useForm"
-import axios from "axios"
+import { useUserOperations } from "../../Hooks/useUserOperations"
 
 function Login() {
     const navigate = useNavigate();
@@ -11,33 +10,8 @@ function Login() {
     const goToCadastro = () => {
         navigate('/cadastro');
     }
-
-    const saveUserInfoLocalStorage = (token, email) => {
-        localStorage.setItem('token', token);
-        localStorage.setItem('email', email);
-    }
-
-    const formState = useForm({ nome: '', password: '' });
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const credentials = {
-            email: formState.form.nome,
-            password: formState.form.password,
-        };
-
-        axios.post('http://localhost:8000/login', credentials, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => {
-                saveUserInfoLocalStorage(response.data.token, formState.form.nome);
-                navigate('/home');
-            })
-            .catch(error => console.log('error'));
-    }
+    
+    const {form, onChangeForm, handleSubmit} = useUserOperations({nome: '', password: ''}, 'user/login')
 
     return (
         <>
@@ -55,10 +29,10 @@ function Login() {
                                         <Label for="firstname">Email</Label>
                                         <Input
                                             name='nome'
-                                            value={formState.form.nome}
+                                            value={form.nome}
                                             type="text"
                                             placeholder="Digite seu email"
-                                            onChange={formState.onChangeForm}
+                                            onChange={onChangeForm}
                                             required
                                         />
                                     </InputBox>
@@ -67,10 +41,10 @@ function Login() {
                                         <Label for="firstname">Senha</Label>
                                         <Input
                                             name='password'
-                                            value={formState.form.password}
+                                            value={form.password}
                                             type="password"
                                             placeholder="Digite sua senha"
-                                            onChange={formState.onChangeForm}
+                                            onChange={onChangeForm}
                                             required
                                         />
                                     </InputBox>
