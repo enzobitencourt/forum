@@ -2,27 +2,30 @@ import { Container, Form, FormImage, Image, InputBox, Input, Label, ContainerFor
 import ImagemLogin from "../../Assets/imagelogin.png"
 import Logo from "../../Assets/logo.png"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import axios from "axios"
 import { useForm } from "../../Hooks/useForm"
+import axios from "axios"
 
 function Login() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const goToCadastro = () => {
-        navigate('/cadastro')
+        navigate('/cadastro');
     }
 
-    const saveUserInfoLocalStorage =(token)=>{
-        localStorage.setItem('token', token)
-        localStorage.setItem('email', email)
+    const saveUserInfoLocalStorage = (token, email) => {
+        localStorage.setItem('token', token);
+        localStorage.setItem('email', email);
     }
 
-    const [form, onChangeForm] = useForm({nome: '', password:''})
+    const formState = useForm({ nome: '', password: '' });
+
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const credentials = { email, password }
+        const credentials = {
+            email: formState.form.nome,
+            password: formState.form.password,
+        };
 
         axios.post('http://localhost:8000/login', credentials, {
             headers: {
@@ -30,10 +33,10 @@ function Login() {
             },
         })
             .then(response => {
-                saveUserInfoLocalStorage(response.data.token)
-                navigate('/home')
+                saveUserInfoLocalStorage(response.data.token, formState.form.nome);
+                navigate('/home');
             })
-            .catch(error => console.log('error'))
+            .catch(error => console.log('error'));
     }
 
     return (
@@ -46,28 +49,30 @@ function Login() {
                                 <Image src={ImagemLogin} />
                             </FormImage>
                             <ContainerFormulario>
-                                <LogoImg src={Logo}/>
+                                <LogoImg src={Logo} />
                                 <StyleForm onSubmit={handleSubmit}>
                                     <InputBox>
                                         <Label for="firstname">Email</Label>
-                                        <Input 
+                                        <Input
                                             name='nome'
-                                            value={form.nome}
+                                            value={formState.form.nome}
                                             type="text"
                                             placeholder="Digite seu email"
-                                            onChange={onChangeForm}
-                                            required />
+                                            onChange={formState.onChangeForm}
+                                            required
+                                        />
                                     </InputBox>
 
                                     <InputBox>
                                         <Label for="firstname">Senha</Label>
-                                        <Input 
+                                        <Input
                                             name='password'
-                                            value={form.password}
+                                            value={formState.form.password}
                                             type="password"
                                             placeholder="Digite sua senha"
-                                            onChange={onChangeForm}
-                                            required />
+                                            onChange={formState.onChangeForm}
+                                            required
+                                        />
                                     </InputBox>
 
                                     <Botao type="submit">Entrar</Botao>
@@ -76,11 +81,10 @@ function Login() {
                             </ContainerFormulario>
                         </Divi>
                     </Form>
-                </ContainerForm >
+                </ContainerForm>
             </Container>
-
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;
