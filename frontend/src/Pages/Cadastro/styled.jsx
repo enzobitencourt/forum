@@ -98,7 +98,7 @@ export const LogoImg = styled.img`
     width: 210px;
 `
 
-export const ContainerFormulario = styled.div`
+export const ContainerFormulario = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;

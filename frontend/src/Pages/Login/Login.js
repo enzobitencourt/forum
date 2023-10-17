@@ -2,7 +2,6 @@ import { Container, Form, FormImage, Image, InputBox, Input, Label, ContainerFor
 import ImagemLogin from "../../Assets/imagelogin.png"
 import Logo from "../../Assets/logo.png"
 import { useNavigate } from "react-router-dom"
-import { useUserOperations } from "../../Hooks/useUserOperations"
 
 function Login() {
     const navigate = useNavigate();
@@ -10,8 +9,6 @@ function Login() {
     const goToCadastro = () => {
         navigate('/cadastro');
     }
-    
-    const {form, onChangeForm, handleSubmit} = useUserOperations({nome: '', password: ''}, 'user/login')
 
     return (
         <>
@@ -24,15 +21,13 @@ function Login() {
                             </FormImage>
                             <ContainerFormulario>
                                 <LogoImg src={Logo} />
-                                <StyleForm onSubmit={handleSubmit}>
+                                <StyleForm>
                                     <InputBox>
                                         <Label for="firstname">Email</Label>
                                         <Input
                                             name='nome'
-                                            value={form.nome}
                                             type="text"
                                             placeholder="Digite seu email"
-                                            onChange={onChangeForm}
                                             required
                                         />
                                     </InputBox>
@@ -41,10 +36,8 @@ function Login() {
                                         <Label for="firstname">Senha</Label>
                                         <Input
                                             name='password'
-                                            value={form.password}
                                             type="password"
                                             placeholder="Digite sua senha"
-                                            onChange={onChangeForm}
                                             required
                                         />
                                     </InputBox>

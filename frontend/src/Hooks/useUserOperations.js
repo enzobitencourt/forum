@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "./useForm";
+import axios from "axios"
 
 export const useUserOperations = (initialForm, path) =>{
 
@@ -13,7 +14,7 @@ export const useUserOperations = (initialForm, path) =>{
         if(token){
             navigate('home')
         } 
-    }, [])
+    }, [navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault();
