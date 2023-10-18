@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import login from "../../Assets/perfil.jpg"
+import login from "../../Assets/perfil.png"
 
 export const Fundo = styled.div`
     width: 98vw;
