@@ -38,6 +38,11 @@ async function login(request, response) {
                             message: `Sucesso! Usuário conectado.`,
                             data: results
                         });
+                    } else {
+                        // Senha incorreta
+                        response.status(401).send({
+                            msg: 'Email ou senha incorretos!'
+                        });
                     }
                 })
                 
@@ -61,6 +66,7 @@ async function login(request, response) {
         }
     });
 }
+
 
 module.exports = {
     login
