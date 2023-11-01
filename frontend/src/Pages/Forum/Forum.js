@@ -16,17 +16,16 @@ import {
 } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { baseUrl } from "../../services/Api"
+import axios from "axios"
 
 function Forum() {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [posts, setPosts] = useState()
     const navigate = useNavigate();
 
     const goBack = () => {
         navigate(-1);
-    };
-
-    const goToPublic = () => {
-        navigate("/publicacao");
     };
 
     useEffect(() => {
@@ -36,10 +35,18 @@ function Forum() {
         }
     }, [navigate]);
 
-    // Estado para rastrear os dados do componente Filtro
-    const [checkedToppingsFiltro, setCheckedToppingsFiltro] = useState([]);
+    useEffect(() => {
+        axios.get(`${baseUrl}/posts/posts`)
+            .then(function (response) {
+                setPosts(response.data.data)
+            })
+            .catch(function (error) {
+                console.log(error)
+                alert("erro")
+            });
+    })
 
-    // Estado para rastrear os dados do componente FiltroArea
+    const [checkedToppingsFiltro, setCheckedToppingsFiltro] = useState([]);
     const [checkedToppingsFiltroArea, setCheckedToppingsFiltroArea] = useState([]);
 
     return (
@@ -64,7 +71,7 @@ function Forum() {
                             <Modal isOpen={isOpen} onClose={onClose}>
                                 <ModalOverlay />
                                 <ModalContent bg='none'>
-                                    <Publicar />
+                                    <Publicar fechar={onClose} />
                                 </ModalContent>
                             </Modal>
                             <Filtros>
@@ -92,10 +99,22 @@ function Forum() {
                                 {checkedToppingsFiltro.concat(checkedToppingsFiltroArea).join(", ")}
                             </RespostaFiltros>
                         </FiltrosEscolhidos>
-                        <Publicacao ir={goToPublic} />
-                        <Publicacao />
-                        <Publicacao />
-                        <Publicacao />
+                        {posts ? (
+                            <>
+                                {posts.map((post, index) => (
+                                    <Publicacao id={post.id}
+                                        key={index}
+                                        titulo={post.titulo}
+                                        usuario={post.user_id}
+                                        descricao={post.descricao}
+                                        criado={post.created_at}
+                                    />
+                                ))}
+                            </>
+                        ) : (
+                            <></>
+                        )}
+
                         <Divisao2 />
                         <FooterResultados />
                     </Direita>

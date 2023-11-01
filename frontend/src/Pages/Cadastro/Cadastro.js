@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Form, FormImage, Image, Input, Label, InputBox, ContainerForm, Divi, LogoImg, ContainerFormulario, StyleForm, Botao, InputBoxContainer } from "./styled";
+import { Container, Form, FormImage, Image, Input, Label, InputBox, ContainerForm, Divi, LogoImg, ContainerFormulario, StyleForm, Botao, InputBoxContainer, Select } from "./styled";
 import ImagemPrincipal from "../../Assets/imageleitura.png";
 import Logo from "../../Assets/logo.png";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ function Cadastro() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         firstName: "",
-        sobrenome: "",
+        cargo: "",
         email: "",
         telefone: "",
         senha: "",
@@ -23,22 +23,22 @@ function Cadastro() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(formData.senha !== formData.confirmSenha){
+        if (formData.senha !== formData.confirmSenha) {
             alert("Senhas não coincidem")
-        } else{
+        } else {
             axios.post(`${baseUrl}/user/create`, formData)
-              .then(function (response) {
-                alert("Usuário Criado")
-                goToLogin()
-              })
-              .catch(function (error) {
-                alert(error.response.data.message)
-              });
+                .then(function (response) {
+                    alert("Usuário Criado")
+                    goToLogin()
+                })
+                .catch(function (error) {
+                    alert(error.response.data.message)
+                });
         }
 
         setFormData({
             firstName: "",
-            sobrenome: "",
+            cargo: "",
             email: "",
             telefone: "",
             senha: "",
@@ -67,7 +67,7 @@ function Cadastro() {
                             <StyleForm>
                                 <InputBoxContainer>
                                     <InputBox>
-                                        <Label htmlFor="firstName">Primeiro Nome</Label>
+                                        <Label htmlFor="firstName">Nome de Usuário</Label>
                                         <Input
                                             id="firstName"
                                             type="text"
@@ -79,16 +79,18 @@ function Cadastro() {
                                         />
                                     </InputBox>
                                     <InputBox>
-                                        <Label htmlFor="sobrenome">Sobrenome</Label>
-                                        <Input
-                                            id="sobrenome"
-                                            type="text"
-                                            name="sobrenome"
-                                            value={formData.sobrenome}
+                                        <Label htmlFor="sobrenome">Cargo</Label>
+                                        <Select
+                                            id="cargo"
+                                            name="cargo"
+                                            value={formData.cargo}
                                             onChange={handleChange}
-                                            placeholder="Digite seu sobrenome"
                                             required
-                                        />
+                                        >
+                                            <option value="">Selecione um cargo</option>
+                                            <option value="Professor">Professor</option>
+                                            <option value="Estudante">Estudante</option>
+                                        </Select>
                                     </InputBox>
                                     <InputBox>
                                         <Label htmlFor="email">Email</Label>

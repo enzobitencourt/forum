@@ -1,13 +1,14 @@
 import Header from "../../components/Header/Header";
 import { Main, Baner, BannerImg, InfosLabel, LogoPerfil, Fundo, Topicos, Name, Forms, FormCustom, CustomInput, DisplayButton, CancelButton, SaveButton, Divisor, Entrada, FormCustom1, Divisor1 } from "./styled"
 import Banner from "../../Assets/banner.png";
-import Perfil from "../../Assets/perfil.png";
 import Footer from "../../components/Footer/Footer"
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../services/Api";
+import aluno from "../../Assets/aluno.png"
+import professor from "../../Assets/professor.png"
 
 function Config() {
     const navigate = useNavigate()
@@ -27,7 +28,6 @@ function Config() {
     useEffect(() => {
         axios.post(`${baseUrl}/find/findUser`, formData)
             .then(function (response) {
-                console.log(response)
                 setUser(response.data.data)
             })
             .catch(function (error) {
@@ -43,8 +43,8 @@ function Config() {
                     <Main>
                         <Baner>
                             <BannerImg src={Banner} />
-                            <LogoPerfil src={Perfil} />
-                            <Name>{user.nome} {user.sobrenome}</Name>
+                            <LogoPerfil src={user.cargo === "Estudante" ? aluno : professor} />
+                            <Name>{user.nome}</Name>
                         </Baner>
                         <Fundo>
                             <Topicos>

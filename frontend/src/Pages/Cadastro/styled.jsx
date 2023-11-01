@@ -80,7 +80,18 @@ export const Input = styled.input`
     border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
-    font-size: 0.8rem;`
+    font-size: 0.8rem;
+`
+
+export const Select = styled.select`
+    width: 90%;
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+`
 
 export const Label = styled.label`
     font-size: 0.75rem;

@@ -24,7 +24,7 @@ export const Titulo = styled.p`
 `
 
 export const Barra = styled.div`
-    width: auto;
+    width: 100%;
     height: 8.5vh;
     display: flex;
     flex-direction: row;
@@ -57,6 +57,7 @@ export const Nome = styled.p`
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
+    text-align: left;
     line-height: normal;
     margin: 0;
 `

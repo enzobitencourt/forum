@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import login from "../../Assets/perfil.png"
 
 export const Fundo = styled.div`
     width: 98vw;
@@ -52,7 +51,7 @@ export const Logins = styled.div`
 `
 
 export const Foto = styled.button`
-    background: url(${login});
+    background: url(${(props) => props.img});
     border-radius: 50%;
     width: 40px;
     height: 40px;

@@ -13,6 +13,8 @@ import {
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../services/Api"
+import aluno from "../../Assets/aluno.png"
+import professor from "../../Assets/professor.png"
 
 function Header() {
     const navigate = useNavigate()
@@ -45,7 +47,6 @@ function Header() {
     useEffect(() => {
         axios.post(`${baseUrl}/find/findUser`, formData)
             .then(function (response) {
-                console.log(response)
                 setUser(response.data.data)
             })
             .catch(function (error) {
@@ -79,7 +80,7 @@ function Header() {
                     <SecondContainer>
                         <Logins>
                             <Topicos>Olá, {user.nome}</Topicos>
-                            <Foto onClick={goToConfig} />
+                            <Foto img={user.cargo === "Estudante" ? aluno : professor} onClick={goToConfig} />
                         </Logins>
                     </SecondContainer>
                 </Fundo>

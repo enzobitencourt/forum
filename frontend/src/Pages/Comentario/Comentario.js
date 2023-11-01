@@ -1,71 +1,170 @@
 import Header from '../../components/Header/Header';
-import fotoPerfil1 from "../../Assets/fotoPerfil1.jpg";
 import botaoComentar from "../../Assets/botaoComentar.png";
-import { Fundo, UserProfile, Voltar, SimboloVolt, TextoVolt, DetalhesUsuario, UserName, TempoVisto, OpnionText, CommentButton, ImgComentar, Escrita, CaixaComentario, BtnPublicar, FotoPerfil, UserProfession, Container, Main, Infos, ComentarioContainer, DivTotal } from "./styled"
+import { Fundo, UserProfile, Voltar, SimboloVolt, TextoVolt, DetalhesUsuario, UserName, TempoVisto, OpnionText, CommentButton, ImgComentar, Escrita, CaixaComentario, BtnPublicar, FotoPerfil, UserProfession, Container, Main, Infos, ComentarioContainer, DivTotal, Titulo } from "./styled"
 import Footer from '../../components/Footer/Footer';
 import Comment from '../../Cards/CardComent/Coment';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Back from "../../Assets/back.png"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { baseUrl } from '../../services/Api';
+import aluno from "../../Assets/aluno.png"
+import professor from "../../Assets/professor.png"
+import axios from 'axios';
 
 function Comentario() {
   const navigate = useNavigate()
+  const params = useParams()
+  const [post, setPost] = useState()
+  const postId = params.id
+  const idUser = localStorage.getItem("user")
+  const [user, setUser] = useState()
+  const [comentarios, setComentarios] = useState()
+  const [comentario, setComentario] = useState()
 
   const goBack = () => {
     navigate(-1)
   }
 
-  useEffect(()=>{
-    const token = localStorage.getItem('token')
-    if(!token){
-        navigate('/')
+  function calcularTempo(dataCriacao) {
+    const dataAtual = new Date();
+    const diferencaEmMilissegundos = dataAtual - new Date(dataCriacao);
+    const segundos = Math.floor(diferencaEmMilissegundos / 1000);
+    const minutos = Math.floor(segundos / 60);
+    const horas = Math.floor(minutos / 60);
+    const dias = Math.floor(horas / 24);
+
+    if (dias > 0) {
+      return `${dias} dias atrás`;
+    } else if (horas > 0) {
+      return `${horas} horas atrás`;
+    } else if (minutos > 0) {
+      return `${minutos} minutos atrás`;
+    } else {
+      return `${segundos} segundos atrás`;
     }
-}, [navigate])
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/')
+    }
+  }, [navigate])
+
+  useEffect(() => {
+    const formData = {
+      id: postId
+    }
+
+    axios.post(`${baseUrl}/posts/find`, formData)
+      .then(function (response) {
+        setPost(response.data.data)
+        const formData2 = {
+          id: response.data.data.user
+        }
+
+        axios.post(`${baseUrl}/find/findUser`, formData2)
+          .then(function (response) {
+            setUser(response.data.data)
+          })
+          .catch(function (error) {
+            alert("erro")
+          });
+      })
+      .catch(function (error) {
+        alert(error.response.data.msg)
+      });
+  }, [postId])
+
+  const newComment = () => {
+    const formData = {
+      descricao: comentario,
+      idUser: idUser,
+      idPost: postId,
+    }
+
+    axios.post(`${baseUrl}/comments/create`, formData)
+      .then(function (response) {
+        alert("Comentário Criado")
+        setComentario('')
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  }
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/comments/comments/${postId}`)
+      .then(function (response) {
+        setComentarios(response.data.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      });
+  })
 
   return (
     <>
-      <Container>
-        <Header />
-        <DivTotal>
-          <Voltar onClick={goBack}>
-            <SimboloVolt src={Back} />
-            <TextoVolt>Voltar</TextoVolt>
-          </Voltar>
-          <Main>
-            <Fundo>
-              <UserProfile>
-                <FotoPerfil img={fotoPerfil1} />
-                <DetalhesUsuario>
-                  <Infos>
-                    <UserName>Arlan Dias</UserName>
-                    <UserProfession>Professor de História</UserProfession>
-                  </Infos>
-                  <TempoVisto>Semana passada</TempoVisto>
-                </DetalhesUsuario>
-              </UserProfile>
+      {post && user ? (
+        <Container>
+          <Header />
+          <DivTotal>
+            <Voltar onClick={goBack}>
+              <SimboloVolt src={Back} />
+              <TextoVolt>Voltar</TextoVolt>
+            </Voltar>
+            <Main>
+              <Fundo>
+                <UserProfile>
+                  <FotoPerfil img={user.cargo === "Estudante" ? aluno : professor} />
+                  <DetalhesUsuario>
+                    <Infos>
+                      <UserName>{user ? user.nome : ""}</UserName>
+                      <UserProfession>{user ? user.cargo : ""}</UserProfession>
+                    </Infos>
+                    <TempoVisto>{calcularTempo(post.criado)}</TempoVisto>
+                  </DetalhesUsuario>
+                </UserProfile>
 
-              <OpnionText>A terceirização e a precarização do trabalho são desafios que envolvem condições de trabalho menos favoráveis, salários baixos, falta de benefícios e menor segurança no emprego. É necessário garantir a proteção dos direitos trabalhistas e promover condições de trabalho justas e dignas.</OpnionText>
+                <Titulo>{post.titulo}</Titulo>
+                <OpnionText>{post.descricao}</OpnionText>
 
-              <ComentarioContainer>
-                <CommentButton>
-                  <ImgComentar src={botaoComentar} />
-                  Comentar
-                </CommentButton>
+                <ComentarioContainer>
+                  <CommentButton>
+                    <ImgComentar src={botaoComentar} />
+                    Comentar
+                  </CommentButton>
 
-                <Escrita>
-                  <CaixaComentario placeholder='Digite seu comentário' />
-                  <BtnPublicar>Publicar</BtnPublicar>
-                </Escrita>
-              </ComentarioContainer>
-            </Fundo>
-
-            <Comment />
-
-          </Main>
-          <div/>
-        </DivTotal>
-        <Footer />
-      </Container>
+                  <Escrita>
+                    <CaixaComentario onChange={(e) => setComentario(e.target.value)} placeholder='Digite seu comentário' />
+                    <BtnPublicar onClick={newComment}>Publicar</BtnPublicar>
+                  </Escrita>
+                </ComentarioContainer>
+              </Fundo>
+              {comentarios ? (
+                <>
+                  {comentarios.map((comentario, index) => (
+                    <Comment key={index}
+                      criado={comentario.created_at}
+                      comentario={comentario.descricao}
+                      user={comentario.user_id}
+                      id={comentario.id}
+                      post={postId}
+                      thisUser={idUser}
+                    />
+                  ))}
+                </>
+              ) : (
+                <></>
+              )}
+            </Main>
+            <div />
+          </DivTotal>
+          <Footer />
+        </Container>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

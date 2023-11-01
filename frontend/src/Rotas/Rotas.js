@@ -16,7 +16,7 @@ function Rotas(){
                 <Route path="home" element={<Home/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="cadastro" element={<Cadastro/>}/>
-                <Route path="publicacao" element={<Comentario/>}/>
+                <Route path="forum/publicacao/:id" element={<Comentario/>}/>
             </Routes>
         </BrowserRouter>
     )

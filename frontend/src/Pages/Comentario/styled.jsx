@@ -41,7 +41,7 @@ export const UserName = styled.div`
 
 export const TempoVisto = styled.div`
     color: #aaa;
-    font-size: 14px;
+    font-size: 16px;
     align-items: center;
     display: flex;
 `
@@ -164,4 +164,15 @@ export const DivTotal = styled.div`
     justify-content: space-between;
     width: 100%;
     padding: 0 3vh;
+`
+
+export const Titulo = styled.p`
+    width: auto;
+    color: #000;
+    font-family: Poppins;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 550;
+    line-height: normal;
+    margin: 0;
 `

@@ -40,14 +40,14 @@ async function listUsers(request, response) {
 async function storeUser(request, response) {
     const values = [
         request.body.firstName,
-        request.body.sobrenome,
+        request.body.cargo,
         request.body.telefone,
         request.body.email,
         bcrypt.hashSync(request.body.senha, 10)
     ];
 
     // Use placeholders na consulta SQL
-    const query = "INSERT INTO usuarios (nome, sobrenome, telefone, email, senha) VALUES (?, ?, ?, ?, ?)";
+    const query = "INSERT INTO usuarios (nome, cargo, telefone, email, senha) VALUES (?, ?, ?, ?, ?)";
 
     // Execute a ação no banco de dados e valide os retornos para o cliente que realizou a solicitação
     connection.query(query, values, (err, results) => {
