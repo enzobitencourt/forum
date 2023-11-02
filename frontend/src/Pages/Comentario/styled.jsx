@@ -26,13 +26,14 @@ export const UserProfile = styled.div`
     align-items: center;
     margin-bottom: 10px;
     gap: 1vw;
+    width: 100%;
 `
 
 export const DetalhesUsuario = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 60vw;
+    width: 90%;
 `
 
 export const UserName = styled.div`

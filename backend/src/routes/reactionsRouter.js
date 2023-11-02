@@ -12,7 +12,7 @@ const {
 } = require('../controllers/reactionsController')
 
 // Criar os endpoints (rotas) que serão acessados a partir dos métodos HTTP (get,post,put,delete)
-router.get('/list', listReactions);
+router.get('/list/:id', listReactions);
 router.post('/create', createReaction);
 router.post('/delete', deleteReaction);
 router.post('/find', findReaction);

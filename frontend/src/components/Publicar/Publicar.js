@@ -6,14 +6,12 @@ import { baseUrl } from "../../services/Api";
 
 function Publicar(props) {
     const [titulo, setTitulo] = useState()
-    const [keywords, setKeywords] = useState()
     const [descricao, setDescricao] = useState()
     const id = localStorage.getItem("user")
 
     const handleClick = () => {
         const formData = {
             titulo: titulo,
-            keywords: keywords,
             descricao: descricao,
             idUser: id
         }
@@ -41,10 +39,6 @@ function Publicar(props) {
                     <Entradas>
                         <Tittle>Título</Tittle>
                         <InputTitulo value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder="Digite aqui seu titulo" />
-                    </Entradas>
-                    <Entradas>
-                        <Tittle>Palavras-chave</Tittle>
-                        <InputTitulo value={keywords} onChange={(e) => setKeywords(e.target.value)} placeholder="Digite aqui suas palavras-chave" />
                     </Entradas>
                     <Entradas>
                         <Tittle>Descrição</Tittle>

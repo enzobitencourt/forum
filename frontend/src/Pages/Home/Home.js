@@ -3,40 +3,62 @@ import Footer from "../../components/Footer/Footer"
 import Header from "../../components/Header/Header"
 import { LastPubli, LastPublis, LeftContainer, LogoGrande, Main, RightContainer } from "./styled"
 import LogoG from "../../Assets/LogoGrande.png"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { baseUrl } from "../../services/Api"
 import { useNavigate } from "react-router-dom"
 
-function Home(){
+function Home() {
     const navigate = useNavigate()
+    const [posts, setPosts] = useState()
 
-    useEffect(()=>{
+    useEffect(() => {
         const token = localStorage.getItem('token')
-        if(!token){
+        if (!token) {
             navigate('/')
         }
     }, [navigate])
 
-    return(
+    useEffect(() => {
+        axios.get(`${baseUrl}/posts/posts`)
+            .then(function (response) {
+                setPosts(response.data.data)
+            })
+            .catch(function (error) {
+                console.log(error)
+                alert("erro")
+            });
+    })
+
+    return (
         <>
-        <Header/>
-        <Main>
-            <LeftContainer>
-                <LastPubli>Últimas Publicações</LastPubli>
-                <LastPublis>
-                    <LastPubliCard/>
-                    <LastPubliCard/>
-                    <LastPubliCard/>
-                    <LastPubliCard/>
-                    <LastPubliCard/>
-                    <LastPubliCard/>
-                    <LastPubliCard/>
-                </LastPublis>
-            </LeftContainer>
-            <RightContainer>
-                <LogoGrande src={LogoG}/>
-            </RightContainer>
-        </Main>
-        <Footer/>
+            <Header />
+            <Main>
+                <LeftContainer>
+                    <LastPubli>Últimas Publicações</LastPubli>
+                    <LastPublis>
+                        {posts ? (
+                            <>
+                                {posts.map((post, index) => (
+                                    <LastPubliCard id={post.id}
+                                        key={index}
+                                        titulo={post.titulo}
+                                        usuario={post.user_id}
+                                        descricao={post.descricao}
+                                        criado={post.created_at}
+                                    />
+                                ))}
+                            </>
+                        ) : (
+                            <></>
+                        )}
+                    </LastPublis>
+                </LeftContainer>
+                <RightContainer>
+                    <LogoGrande src={LogoG} />
+                </RightContainer>
+            </Main>
+            <Footer />
         </>
     )
 }

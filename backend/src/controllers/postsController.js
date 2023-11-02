@@ -37,12 +37,11 @@ async function listPosts(request, response) {
 async function newPost(request, response) {
     const values = [
         request.body.titulo,
-        request.body.keywords,
         request.body.descricao,
         request.body.idUser,
     ];
 
-    const query = "INSERT INTO posts (titulo, keywords, descricao, user_id) VALUES (?, ?, ?, ?)";
+    const query = "INSERT INTO posts (titulo, descricao, user_id) VALUES (?, ?, ?)";
 
     try {
         const results = await new Promise((resolve, reject) => {

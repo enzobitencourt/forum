@@ -1,6 +1,6 @@
 import Footer from "../../components/Footer/Footer"
 import Header from "../../components/Header/Header"
-import { AdicionarPubli, Baixo, Cima, Direita, Divisao, Divisao2, Esquerda, FiltroContainer, Filtros, FiltrosEscolhidos, Input, InputContainer, MainContainer, RespostaFiltros, SimboloVolt, Subtitulo, TemaDisc, TextoVolt, Titulo, TituloFiltro, TituloPrincipal, Voltar } from "./styled"
+import { AdicionarPubli, Baixo, Cima, Container, Direita, Divisao, Divisao2, Esquerda, FiltroContainer, Filtros, FiltrosEscolhidos, Input, InputContainer, MainContainer, RespostaFiltros, SimboloVolt, Subtitulo, TemaDisc, TextoVolt, Titulo, TituloFiltro, TituloPrincipal, Voltar } from "./styled"
 import Back from "../../Assets/back.png"
 import Filtro from "../../components/Filtro/Filtro"
 import FiltroArea from "../../components/FiltroArea/FiltroArea"
@@ -21,8 +21,10 @@ import axios from "axios"
 
 function Forum() {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [posts, setPosts] = useState()
+    const [posts, setPosts] = useState([])
     const navigate = useNavigate();
+    const [nome, setNome] = useState()
+    const [filteredPosts, setFilteredPosts] = useState([])
 
     const goBack = () => {
         navigate(-1);
@@ -42,13 +44,21 @@ function Forum() {
             })
             .catch(function (error) {
                 console.log(error)
-                alert("erro")
+                alert("Erro ao buscar posts")
             });
-    })
+    }, [])
 
     const [checkedToppingsFiltro, setCheckedToppingsFiltro] = useState([]);
     const [checkedToppingsFiltroArea, setCheckedToppingsFiltroArea] = useState([]);
-
+    
+    useEffect(() => {
+        if (posts && nome) {
+          setFilteredPosts(posts.filter(post => post.titulo.includes(nome))) 
+        } else{
+           setFilteredPosts(posts)
+        }
+      }, [nome, posts]);
+      
     return (
         <>
             <Header />
@@ -91,7 +101,7 @@ function Forum() {
                         <TemaDisc>Introdução e posicionamento de trabalhadores pertencentes a classes sociais marginalizadas no mundo do trabalho</TemaDisc>
                         <InputContainer>
                             <SearchIcon />
-                            <Input type='text' placeholder="Pesquise por título" id='titulo' name='titulo' />
+                            <Input value={nome} onChange={(e)=>setNome(e.target.value)} type='text' placeholder="Pesquise por título" id='titulo' name='titulo' />
                         </InputContainer>
                         <FiltrosEscolhidos>
                             <TituloFiltro>Filtro de palavra-chave:</TituloFiltro>
@@ -99,9 +109,9 @@ function Forum() {
                                 {checkedToppingsFiltro.concat(checkedToppingsFiltroArea).join(", ")}
                             </RespostaFiltros>
                         </FiltrosEscolhidos>
-                        {posts ? (
+                        {filteredPosts ? (
                             <>
-                                {posts.map((post, index) => (
+                                {filteredPosts.map((post, index) => (
                                     <Publicacao id={post.id}
                                         key={index}
                                         titulo={post.titulo}
@@ -112,9 +122,10 @@ function Forum() {
                                 ))}
                             </>
                         ) : (
-                            <></>
+                            <Container>
+                                <p>Nenhum post encontrado</p>
+                            </Container>
                         )}
-
                         <Divisao2 />
                         <FooterResultados />
                     </Direita>

@@ -6,7 +6,7 @@ export const CriarPublicacao = styled.div`
     border-radius: 20px;
     align-content: center;
     width: 35vw;
-    height: 95vh;
+    height: 70vh;
 `
 
 export const InputTitulo = styled.input`

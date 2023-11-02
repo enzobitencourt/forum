@@ -9,6 +9,7 @@ import professor from "../../Assets/professor.png"
 
 function Comment(props) {
     const [user, setUser] = useState()
+    const [comentarios, setComentarios] = useState()
 
     function calcularTempo(dataCriacao) {
         const dataAtual = new Date();
@@ -43,9 +44,16 @@ function Comment(props) {
             });
     }, [props.user])
 
+    useEffect(() => {
+        axios.get(`${baseUrl}/reactions/list/${props.id}`)
+            .then(function (response) {
+                setComentarios(response.data.data)
+            })
+    })
+
     return (
         <>
-            {user ? (
+            {user && comentarios ? (
                 <Fundo>
                     <UserProfile>
                         <FotoPerfil img={user.cargo === "Estudante" ? aluno : professor} />
@@ -60,7 +68,7 @@ function Comment(props) {
                     <OpnionText>{props.comentario}</OpnionText>
                     <LikeButton>
                         <Like comment={props.id} post={props.post} user={props.thisUser} />
-                        <p>10</p>
+                        <p>{comentarios.length}</p>
                     </LikeButton>
                 </Fundo>
             ) : (

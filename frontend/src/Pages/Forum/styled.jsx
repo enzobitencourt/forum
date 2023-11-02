@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
     margin: 1vw;
     display: flex;
     flex-direction: column;
+    margin-bottom: 25vh;
 `
 
 export const Esquerda = styled.div`
@@ -191,4 +192,12 @@ export const Divisao2 = styled.div`
     width: 100%;
     height: 1px;
     background: #7A757D;
+`
+
+export const Container = styled.div`
+    height: 65vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

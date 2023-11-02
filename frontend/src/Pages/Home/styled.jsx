@@ -37,7 +37,8 @@ export const LastPublis = styled.div`
     flex-direction: column;
     gap: 1vw;
     width: 30vw;
-    height: 104vh;
+    height: auto;
+    max-height: 104vh;
     overflow-y: scroll;
     align-items: center;
 `

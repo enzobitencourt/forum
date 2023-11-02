@@ -25,7 +25,7 @@ async function createReaction(request, response) {
 async function findReaction(request, response) {
     const { user, comentario } = request.body;
 
-    const query = "SELECT 1 FROM comments WHERE `user_id` = ? AND `comment_id` = ?";
+    const query = "SELECT * FROM reactions WHERE `user_id` = ? AND `comment_id` = ?";
 
     connection.query(query, [user, comentario], (err, results) => {
         try {

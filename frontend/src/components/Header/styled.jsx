@@ -42,11 +42,12 @@ export const Topicos = styled.button`
     line-height: normal;
 `
 export const Logins = styled.div`
-    width: 9vw;
+    width: auto;
     height: 10vh;
     justify-content: space-between;
     align-items: center;
     display: flex;
+    gap: 1vw;
     flex-direction: row;
 `
 
@@ -56,4 +57,5 @@ export const Foto = styled.button`
     width: 40px;
     height: 40px;
     background-size: cover;
+    border: 0.5px solid black;
 `

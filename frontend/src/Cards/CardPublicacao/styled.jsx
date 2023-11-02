@@ -7,7 +7,7 @@ export const Container = styled.button`
     padding: 4vh;
     gap: 3.5vh;
     width: 70vw;
-    height: 47vh;
+    height: auto;
     border-radius: 10px;
     background: #FFF;
 `
@@ -69,6 +69,7 @@ export const Cargo = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: left;
     margin: 0;
 `
 

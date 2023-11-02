@@ -165,6 +165,19 @@ export const Entrada = styled.div`
     align-items: flex-start;
 `
 
+export const Select = styled.select`
+    background-color: white;
+    height: 7vh;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 25vw;
+    padding: 0 0 0 1vw;
+
+    ::placeholder{
+        margin-right: 5px;
+        padding: 10px;;
+    }
+`
 
 
 

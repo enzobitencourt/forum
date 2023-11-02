@@ -91,6 +91,8 @@ function Comentario() {
       .catch(function (error) {
         console.log(error)
       });
+
+      setComentario("")
   }
 
   useEffect(() => {
@@ -136,7 +138,7 @@ function Comentario() {
                   </CommentButton>
 
                   <Escrita>
-                    <CaixaComentario onChange={(e) => setComentario(e.target.value)} placeholder='Digite seu comentário' />
+                    <CaixaComentario onChange={(e) => setComentario(e.target.value)} value={comentario} placeholder='Digite seu comentário' />
                     <BtnPublicar onClick={newComment}>Publicar</BtnPublicar>
                   </Escrita>
                 </ComentarioContainer>

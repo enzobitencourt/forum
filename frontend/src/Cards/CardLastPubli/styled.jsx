@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import comments from "../../Assets/comments.svg"
 
-export const Container = styled.div`
+export const Container = styled.button`
     display: flex;
     flex-direction: column;
     padding: 3vh 1vw;
@@ -59,6 +59,7 @@ export const Nome = styled.p`
     font-weight: 600;
     line-height: normal;
     margin: 0;
+    text-align: left;
 `
 
 export const Cargo = styled.p`
@@ -69,6 +70,7 @@ export const Cargo = styled.p`
     font-weight: 400;
     line-height: normal;
     margin: 0;
+    text-align: left;
 `
 
 export const Tempo = styled.p`

@@ -1,5 +1,5 @@
 import Header from "../../components/Header/Header";
-import { Main, Baner, BannerImg, InfosLabel, LogoPerfil, Fundo, Topicos, Name, Forms, FormCustom, CustomInput, DisplayButton, CancelButton, SaveButton, Divisor, Entrada, FormCustom1, Divisor1 } from "./styled"
+import { Main, Baner, BannerImg, InfosLabel, LogoPerfil, Fundo, Topicos, Name, Forms, FormCustom, CustomInput, DisplayButton, CancelButton, SaveButton, Divisor, Entrada, FormCustom1, Divisor1, Select } from "./styled"
 import Banner from "../../Assets/banner.png";
 import Footer from "../../components/Footer/Footer"
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
@@ -17,6 +17,12 @@ function Config() {
         id: id
     }
     const [user, setUser] = useState()
+    const [nome, setNome] = useState()
+    const [cargo, setCargo] = useState()
+    const [tel, setTel] = useState()
+    const [confirmSenha, setConfirmSenha] = useState()
+    const [senha, setSenha] = useState()
+
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -34,6 +40,50 @@ function Config() {
                 alert(error.response.data.msg)
             });
     })
+
+    const handleAlter = () => {
+        if (senha !== confirmSenha) {
+            alert("Novas senhas não coincidem")
+        } else {
+            const formData = {};
+
+            if (nome) {
+                formData.nome = nome;
+            }
+            if (cargo) {
+                formData.cargo = cargo;
+            }
+            if (tel) {
+                formData.telefone = tel;
+            }
+            if (senha) {
+                formData.senha = senha;
+            }
+
+            axios.put(`${baseUrl}/user/${id}`, formData)
+                .then(function (response) {
+                    alert("Informações alteradas")
+                })
+                .catch(function (error) {
+                    console.log(error.data.message)
+                });
+
+            setNome('')
+            setCargo('')
+            setTel('')
+            setSenha('')
+            setConfirmSenha('')
+        }
+    }
+
+
+    const handleCancel = () => {
+        setNome('')
+        setCargo('')
+        setTel('')
+        setSenha('')
+        setConfirmSenha('')
+    }
 
     return (
         <>
@@ -60,21 +110,26 @@ function Config() {
                                                     <Divisor>
                                                         <Entrada>
                                                             <InfosLabel>Nome</InfosLabel>
-                                                            <CustomInput type="text" placeholder="Nome de Usuário" />
+                                                            <CustomInput value={nome} onChange={(e) => setNome(e.target.value)} type="text" placeholder={user.nome} />
                                                         </Entrada>
                                                         <Entrada>
-                                                            <InfosLabel>Sobrenome</InfosLabel>
-                                                            <CustomInput type="text" placeholder="Nome Completo" />
+                                                            <InfosLabel>Cargo</InfosLabel>
+                                                            <Select
+                                                                id="cargo"
+                                                                name="cargo"
+                                                                value={cargo}
+                                                                onChange={(e) => setCargo(e.target.value)}
+                                                            >
+                                                                <option value="">Selecione um cargo</option>
+                                                                <option value="Professor">Professor</option>
+                                                                <option value="Estudante">Estudante</option>
+                                                            </Select>
                                                         </Entrada>
                                                     </Divisor>
                                                     <Divisor>
                                                         <Entrada>
-                                                            <InfosLabel>Email</InfosLabel>
-                                                            <CustomInput type="email" placeholder="Email" />
-                                                        </Entrada>
-                                                        <Entrada>
-                                                            <InfosLabel>Ocupação</InfosLabel>
-                                                            <CustomInput type="text" placeholder="Ocupação" />
+                                                            <InfosLabel>Telefone</InfosLabel>
+                                                            <CustomInput value={tel} type="tel" placeholder={user.telefone} onChange={(e) => setTel(e.target.value)} />
                                                         </Entrada>
                                                     </Divisor>
                                                 </FormCustom>
@@ -85,18 +140,12 @@ function Config() {
                                                 <FormCustom1>
                                                     <Divisor1>
                                                         <Entrada>
-                                                            <InfosLabel>Senha atual</InfosLabel>
-                                                            <CustomInput type="text" placeholder="Nome" />
-                                                        </Entrada>
-                                                    </Divisor1>
-                                                    <Divisor1>
-                                                        <Entrada>
                                                             <InfosLabel>Senha nova</InfosLabel>
-                                                            <CustomInput type="password" placeholder="Senha nova" />
+                                                            <CustomInput value={senha} type="password" onChange={(e) => setSenha(e.target.value)} placeholder="Senha nova" />
                                                         </Entrada>
                                                         <Entrada>
                                                             <InfosLabel>Repetir senha nova</InfosLabel>
-                                                            <CustomInput type="password" placeholder="Repetir sua senha nova" />
+                                                            <CustomInput value={confirmSenha} type="password" onChange={(e) => setConfirmSenha(e.target.value)} placeholder="Repetir sua senha nova" />
                                                         </Entrada>
                                                     </Divisor1>
                                                 </FormCustom1>
@@ -106,8 +155,8 @@ function Config() {
                                 </Tabs>
                             </Topicos>
                             <DisplayButton>
-                                <CancelButton class="submit" id="submit" >Cancelar</CancelButton>
-                                <SaveButton class="submit" id="submit" type="submit">Salvar</SaveButton>
+                                <CancelButton onClick={handleCancel} class="submit" id="submit" >Cancelar</CancelButton>
+                                <SaveButton onClick={handleAlter} class="submit" id="submit" type="submit">Salvar</SaveButton>
                             </DisplayButton>
                         </Fundo>
                     </Main >

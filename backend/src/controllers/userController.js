@@ -89,15 +89,34 @@ async function storeUser(request, response) {
 
 // Função que atualiza o usuário no banco
 async function updateUser(request, response) {
-    // Preparar o comando de execução no banco
-    const query = "UPDATE usuarios SET `nome` = ?, `senha` = ? WHERE `id` = ?";
+    const userId = request.params.id;
+    const userData = request.body;
+    const updateFields = [];
 
-    // Recuperar os dados enviados na requisição respectivamente
-    const params = Array(
-        request.body.nome,
-        bcrypt.hashSync(request.body.senha, 10),        
-        request.params.id  // Recebimento de parametro da rota
-    );
+    if (userData.nome) {
+        updateFields.push('`nome` = ?');
+    }
+    if (userData.senha) {
+        updateFields.push('`senha` = ?');
+        userData.senha = bcrypt.hashSync(userData.senha, 10);
+    }
+    if (userData.cargo) {
+        updateFields.push('`cargo` = ?');
+    }
+    if (userData.telefone) {
+        updateFields.push('`telefone` = ?');
+    }
+
+    if (updateFields.length === 0) {
+        response.status(400).json({
+            success: false,
+            message: "Nenhum campo para atualizar foi fornecido."
+        });
+        return;
+    }
+
+    const query = `UPDATE usuarios SET ${updateFields.join(', ')} WHERE id = ?`;
+    const params = [...Object.values(userData), userId];
 
     // Executa a ação no banco e valida os retornos para o client que realizou a solicitação
     connection.query(query, params, (err, results) => {
