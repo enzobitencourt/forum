@@ -98,7 +98,7 @@ function Forum() {
                     </Esquerda>
                     <Direita>
                         <Subtitulo>Discussão</Subtitulo>
-                        <TemaDisc>Introdução e posicionamento de trabalhadores pertencentes a classes sociais marginalizadas no mundo do trabalho</TemaDisc>
+                        <TemaDisc>Mundo do  trabalho - Desafios do século XXI</TemaDisc>
                         <InputContainer>
                             <SearchIcon />
                             <Input value={nome} onChange={(e)=>setNome(e.target.value)} type='text' placeholder="Pesquise por título" id='titulo' name='titulo' />

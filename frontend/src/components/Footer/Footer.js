@@ -22,7 +22,8 @@ function Footer() {
                         <Titulo1>Orientadores</Titulo1>
                         <Texto1>Guilherme Golschmitt</Texto1>
                         <Texto1>Paula Rabelo</Texto1>
-                        <Texto1>Árlan Dias</Texto1>
+                        <Texto1>Andrei Vupt</Texto1>
+                        <Texto1>Morgana de Moraes</Texto1>
                     </Creditos>
                     <Creditos>
                         <Titulo1>Linguagens</Titulo1>
