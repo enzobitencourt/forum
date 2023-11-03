@@ -24,7 +24,7 @@ export const Titulo = styled.p`
 `
 
 export const Barra = styled.div`
-    width: auto;
+    width: 100%;
     height: 8.5vh;
     display: flex;
     flex-direction: row;
@@ -32,7 +32,7 @@ export const Barra = styled.div`
 `
 
 export const Perfil = styled.div`
-    width: 20vw;
+    width: auto;
     height: 8.5vh;
     display: flex;
     flex-direction: row;
@@ -80,6 +80,7 @@ export const Tempo = styled.p`
     font-weight: 400;
     line-height: normal;
     margin: 0;
+    width: auto;
 `
 export const Descricao = styled.p`
     color: var(--base-mid-gray, #7A757D);

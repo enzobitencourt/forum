@@ -19,7 +19,7 @@ export const InputTitulo = styled.input`
     background: var(--base-light-blue, #E8EFFF);
 `
 
-export const InputContent = styled.input`
+export const InputContent = styled.textarea`
     width: 95%;
     padding: 8px;
     font-size: 16px;

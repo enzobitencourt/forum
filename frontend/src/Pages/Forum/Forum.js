@@ -46,19 +46,21 @@ function Forum() {
                 console.log(error)
                 alert("Erro ao buscar posts")
             });
-    }, [])
+    })
 
     const [checkedToppingsFiltro, setCheckedToppingsFiltro] = useState([]);
     const [checkedToppingsFiltroArea, setCheckedToppingsFiltroArea] = useState([]);
-    
+
     useEffect(() => {
         if (posts && nome) {
-          setFilteredPosts(posts.filter(post => post.titulo.includes(nome))) 
-        } else{
-           setFilteredPosts(posts)
+            const lowercaseNome = nome.toLowerCase();
+            setFilteredPosts(posts.filter(post => post.titulo.toLowerCase().includes(lowercaseNome)));
+        } else {
+            setFilteredPosts(posts);
         }
-      }, [nome, posts]);
-      
+    }, [nome, posts]);
+
+
     return (
         <>
             <Header />
@@ -98,10 +100,10 @@ function Forum() {
                     </Esquerda>
                     <Direita>
                         <Subtitulo>Discussão</Subtitulo>
-                        <TemaDisc>Mundo do  trabalho - Desafios do século XXI</TemaDisc>
+                        <TemaDisc>Mundo do  trabalho - Desafios do Século XXI</TemaDisc>
                         <InputContainer>
                             <SearchIcon />
-                            <Input value={nome} onChange={(e)=>setNome(e.target.value)} type='text' placeholder="Pesquise por título" id='titulo' name='titulo' />
+                            <Input value={nome} onChange={(e) => setNome(e.target.value)} type='text' placeholder="Pesquise por título" id='titulo' name='titulo' />
                         </InputContainer>
                         <FiltrosEscolhidos>
                             <TituloFiltro>Filtro de palavra-chave:</TituloFiltro>

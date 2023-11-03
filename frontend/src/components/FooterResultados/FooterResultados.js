@@ -18,7 +18,7 @@ function FooterResultados(){
             </Numeros>
             <BotaoPaginaProx>
                 <Flecha src={Proximo}/>
-                <Titulo>Voltar</Titulo>
+                <Titulo>Avançar</Titulo>
             </BotaoPaginaProx>
         </Paginas>
         </>

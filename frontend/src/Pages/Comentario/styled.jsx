@@ -86,7 +86,7 @@ export const Escrita = styled.div`
     align-items: end;
 `
 
-export const CaixaComentario = styled.input`
+export const CaixaComentario = styled.textarea`
     width: 100%;
     min-height: 16vh;
     resize: none;

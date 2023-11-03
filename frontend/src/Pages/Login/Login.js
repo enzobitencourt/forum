@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { baseUrl } from "../../services/Api";
 import axios from "axios";
+import { useToast } from '@chakra-ui/react'
 
 function Login() {
     const navigate = useNavigate();
+    const toast = useToast()
     const [formData, setFormData] = useState({
         email: "",
         senha: ""
@@ -29,11 +31,25 @@ function Login() {
                 console.log(response)
                 localStorage.setItem('user', response.data.data[0].id)
                 localStorage.setItem('token', response.data.data[0].token)
-                alert(response.data.message)
+                toast({
+                    position: 'bottom-left',
+                    title: 'Sucesso',
+                    description: response.data.message,
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                  })
                 goToHome()
             })
             .catch(function (error) {
-                alert(error.response.data.msg)
+                toast({
+                    position: 'bottom-left',
+                    title: 'Erro',
+                    description: error.response.data.msg,
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true,
+                  })
             });
 
         setFormData({

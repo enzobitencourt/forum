@@ -22,13 +22,20 @@ function Home() {
     useEffect(() => {
         axios.get(`${baseUrl}/posts/posts`)
             .then(function (response) {
-                setPosts(response.data.data)
+                const sortedPosts = response.data.data.sort((a, b) => {
+                    const dateA = new Date(a.created_at);
+                    const dateB = new Date(b.created_at);
+                    return dateB - dateA;
+                });
+
+                setPosts(sortedPosts);
             })
             .catch(function (error) {
-                console.log(error)
-                alert("erro")
+                console.log(error);
+                alert("erro");
             });
-    })
+    }, []);
+
 
     return (
         <>
@@ -39,7 +46,7 @@ function Home() {
                     <LastPublis>
                         {posts ? (
                             <>
-                                {posts.map((post, index) => (
+                                {posts.slice(0, 5).map((post, index) => (
                                     <LastPubliCard id={post.id}
                                         key={index}
                                         titulo={post.titulo}
@@ -48,6 +55,7 @@ function Home() {
                                         criado={post.created_at}
                                     />
                                 ))}
+
                             </>
                         ) : (
                             <></>

@@ -10,9 +10,11 @@ import { baseUrl } from '../../services/Api';
 import aluno from "../../Assets/aluno.png"
 import professor from "../../Assets/professor.png"
 import axios from 'axios';
+import { useToast } from '@chakra-ui/react';
 
 function Comentario() {
   const navigate = useNavigate()
+  const toast = useToast()
   const params = useParams()
   const [post, setPost] = useState()
   const postId = params.id
@@ -85,14 +87,26 @@ function Comentario() {
 
     axios.post(`${baseUrl}/comments/create`, formData)
       .then(function (response) {
-        alert("Comentário Criado")
+        toast({
+          position: 'bottom-left',
+          title: 'Sucesso',
+          description: "Comentário criado",
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        })
         setComentario('')
       })
       .catch(function (error) {
-        console.log(error)
+        toast({
+          position: 'bottom-left',
+          title: 'Erro',
+          description: "Erro ao criar comentário",
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        })
       });
-
-      setComentario("")
   }
 
   useEffect(() => {

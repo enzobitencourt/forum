@@ -5,9 +5,11 @@ import Logo from "../../Assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../services/Api";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 function Cadastro() {
     const navigate = useNavigate();
+    const toast = useToast()
     const [formData, setFormData] = useState({
         firstName: "",
         cargo: "",
@@ -28,11 +30,25 @@ function Cadastro() {
         } else {
             axios.post(`${baseUrl}/user/create`, formData)
                 .then(function (response) {
-                    alert("Usuário Criado")
+                    toast({
+                        position: 'bottom-left',
+                        title: 'Sucesso',
+                        description: "Usuário criado",
+                        status: 'success',
+                        duration: 3000,
+                        isClosable: true,
+                      })
                     goToLogin()
                 })
                 .catch(function (error) {
-                    alert(error.response.data.message)
+                    toast({
+                        position: 'bottom-left',
+                        title: 'Erro',
+                        description: error.response.data.message,
+                        status: 'error',
+                        duration: 3000,
+                        isClosable: true,
+                      })
                 });
         }
 

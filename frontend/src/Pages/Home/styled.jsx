@@ -23,7 +23,7 @@ export const LeftContainer = styled.div`
 export const LastPubli = styled.div`
     border-radius: 100px;
     width: 28vw;
-    height: 6vh;
+    height: 8vh;
     background: #2E266D;
     font-size: 12px;
     color: white;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BtnPublicar, Conteudo, CriarPublicacao, Entradas, FooterPublicacao, Header, InputContent, InputTitulo, Tittle } from "./styled";
-import { ModalCloseButton } from "@chakra-ui/react";
+import { ModalCloseButton, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { baseUrl } from "../../services/Api";
 
@@ -8,6 +8,7 @@ function Publicar(props) {
     const [titulo, setTitulo] = useState()
     const [descricao, setDescricao] = useState()
     const id = localStorage.getItem("user")
+    const toast = useToast()
 
     const handleClick = () => {
         const formData = {
@@ -18,11 +19,25 @@ function Publicar(props) {
 
         axios.post(`${baseUrl}/posts/create`, formData)
             .then(function (response) {
-                console.log(response)
-                alert("Post Criado")
+                toast({
+                    position: 'bottom-left',
+                    title: 'Sucesso',
+                    description: "Post criado",
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                })
+                props.fechar()
             })
             .catch(function (error) {
-                console.log(error)
+                toast({
+                    position: 'bottom-left',
+                    title: 'Erro',
+                    description: "Não foi possível criar o post",
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: true,
+                })
             });
     }
 
