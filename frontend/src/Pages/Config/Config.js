@@ -2,7 +2,7 @@ import Header from "../../components/Header/Header";
 import { Main, Baner, BannerImg, InfosLabel, LogoPerfil, Fundo, Topicos, Name, Forms, FormCustom, CustomInput, DisplayButton, CancelButton, SaveButton, Divisor, Entrada, FormCustom1, Divisor1, Select } from "./styled"
 import Banner from "../../Assets/banner.png";
 import Footer from "../../components/Footer/Footer"
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -22,6 +22,7 @@ function Config() {
     const [tel, setTel] = useState()
     const [confirmSenha, setConfirmSenha] = useState()
     const [senha, setSenha] = useState()
+    const toast = useToast()
 
 
     useEffect(() => {
@@ -62,10 +63,24 @@ function Config() {
 
             axios.put(`${baseUrl}/user/${id}`, formData)
                 .then(function (response) {
-                    alert("Informações alteradas")
+                    toast({
+                        position: 'bottom-left',
+                        title: 'Sucesso',
+                        description: "Informações alteradas",
+                        status: 'success',
+                        duration: 3000,
+                        isClosable: true,
+                      })
                 })
                 .catch(function (error) {
-                    console.log(error.data.message)
+                    toast({
+                        position: 'bottom-left',
+                        title: 'Erro',
+                        description: error.data.message,
+                        status: 'error',
+                        duration: 3000,
+                        isClosable: true,
+                      })
                 });
 
             setNome('')
